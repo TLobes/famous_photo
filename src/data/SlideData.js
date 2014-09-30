@@ -1,16 +1,14 @@
 define(function(require, exports, module) {
     var SlideData = {
-        userId: '109813050055185479846',
-        albumId: '6013105701911614529',
-        picasaUrl: 'https://picasaweb.google.com/data/feed/api/user/',
-        queryParams: '?alt=json&hl=en_US&access=visible&fields=entry(id,media:group(media:content,media:description,media:keywords,media:title))',
-        defaultImage: 'https://lh4.googleusercontent.com/-HbYp2q1BZfQ/U3LXxmWoy7I/AAAAAAAAAJk/VqI5bGooDaA/s1178-no/1.jpg'
+        picasaUrl: 'https://picasaweb.google.com/data/feed/api/all',
+        queryParams: '?kind=photo&q=japan&max-results=5&imgmax=720&alt=json',
+        defaultImage: 'http://photos-c.ak.instagram.com/hphotos-ak-xap1/10245939_380774225397386_1196455441_n.jpg'
     };
-
+ 
     SlideData.getUrl = function() {
-        return SlideData.picasaUrl + SlideData.userId + '/albumid/' + SlideData.albumId + SlideData.queryParams;
+        return SlideData.picasaUrl + SlideData.queryParams;
     };
-
+ 
     SlideData.parse = function(data) {
         var urls = [];
         data = JSON.parse(data);
@@ -21,6 +19,6 @@ define(function(require, exports, module) {
         }
         return urls;
     };
-
+ 
     module.exports = SlideData;
 });
